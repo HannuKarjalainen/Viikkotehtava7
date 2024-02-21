@@ -10,6 +10,7 @@ const y_input = document.querySelector('#y')
 const draw_button = document.querySelector('button')
 const radio_form = document.querySelector('form')
 const line_width_input = document.querySelector('input[type=number]')
+const color_input = document.querySelector('input[type=color]')
 
 const updateUI =(label3,label4)=> {
     document.querySelector('div#third label').innerHTML = label3
@@ -31,7 +32,7 @@ radio_form.addEventListener('click',() => {
             updateUI('x2','y2')
             break
         case 'circle':
-            updateUI('width:')
+            updateUI('radius:')
             break
         case 'rectangle':
             updateUI('width:','height:')
@@ -66,9 +67,10 @@ const drawLine = () => {
     const x2 = document.querySelector('div#third input').value;
     const y2 = document.querySelector('div#fourth input').value;
     const lineWidth = line_width_input.value;
-    
+    const color = color_input.value;
     const line = new Line(x, y, x2, y2);
     line.setLineWidth = lineWidth;
+    line.setColor = color;
     line.draw(ctx);
 };
 
@@ -78,9 +80,10 @@ const drawRectangle = () => {
     const width = document.querySelector('div#third input').value;
     const height = document.querySelector('div#fourth input').value;
     const lineWidth = line_width_input.value;
-
+    const color = color_input.value;
     const rectangle = new Rectangle(x, y, width, height);
-    rectangle.setLineWidth = lineWidth;
+    rectangle.setLineWidth = lineWidth
+    rectangle.setColor = color
     rectangle.draw(ctx);
 };
 
@@ -89,18 +92,21 @@ const drawSquare = () => {
     const y = y_input.value;
     const sideLength = document.querySelector('div#third input').value;
     const lineWidth = line_width_input.value;
-
+    const color = color_input.value;
     const square = new Square(x, y, sideLength);
     square.setLineWidth = lineWidth;
+    square.setColor = color;
     square.draw(ctx);
 };
 
 const drawCircle = () => {
-    const x = x_input.value
-    const y = y_input.value
-    const width = document.querySelector('div#third input').value
-    const lineWidth = line_width_input.value
-    const circle = new Circle(x,y,width/2)
-    circle.setLineWidth = lineWidth
+    const x = x_input.value;
+    const y = y_input.value;
+    const width = document.querySelector('div#third input').value;
+    const lineWidth = line_width_input.value;
+    const circle = new Circle(x,y,width/2);
+    const color = color_input.value;
+    circle.setLineWidth = lineWidth;
+    circle.setColor = color;
     circle.draw(ctx)
 }
